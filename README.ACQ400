@@ -1,6 +1,8 @@
 echo ACQ400 branched from BASE 7.0.2 and cross compiled
 
-echo CENTOS: sudo dnf install rpcgen re2c libtirpc-devel
+echo CENTOS: 
+sudo dnf install rpcgen re2c libtirpc-devel
+dnf install perl-ExtUtils-Install perl-FindBin
 
 echo UBUNTU: sudo apt-get install re2c libtirpc-dev rpcsvc-proto
 
