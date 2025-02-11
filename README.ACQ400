@@ -53,4 +53,19 @@ index dd30afc79..4b3bdd085 100644
 -CROSS_COMPILER_TARGET_ARCHS=linux-arm
 +#CROSS_COMPILER_TARGET_ARCHS=linux-arm
 
+ALSO, for SEQ
+pgm@hoy6um:~/PROJECTS/ACQ400_ESW_TOP/EPICS7/modules/seq$ git diff
+diff --git a/configure/CONFIG_SITE b/configure/CONFIG_SITE
+index 8bfa07e..d375a70 100644
+--- a/configure/CONFIG_SITE
++++ b/configure/CONFIG_SITE
+@@ -2,7 +2,7 @@
+ 
+ # To restrict the architectures to cross-compile for, set this:
+ #CROSS_COMPILER_TARGET_ARCHS = vxWorks-68040
+-CROSS_COMPILER_TARGET_ARCHS = linux-arm
++#CROSS_COMPILER_TARGET_ARCHS = linux-arm
+ 
+
+
 
