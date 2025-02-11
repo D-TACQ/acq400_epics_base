@@ -25,9 +25,32 @@ sudo ln -s ${PWD} /usr/local/epics
 ln -s acq400_epics_base base
 
 cd base; 
+
+# do this ONCE
+sudo mkdir -p /usr/local/epics; sudo chown $USER:$USER /usr/local/epics
+ln -s $PWD /usr/local/epics
+# do that ONCE
+
 source ./setup.env
 ./setup_buildroot_links
 make
+make install
+# do this ONCE
+(cd ../modules; ln -s $PWD /usr/local/epics)
+# do that ONCE
 (cd ../modules; for dir in *;do (cd $dir; make); done)
 ./harvest
+
+# For linux_x86_64 ONLY, disable X-compile with this patch:
+diff --git a/configure/CONFIG_SITE b/configure/CONFIG_SITE
+index dd30afc79..4b3bdd085 100644
+--- a/configure/CONFIG_SITE
++++ b/configure/CONFIG_SITE
+@@ -96,7 +96,7 @@
+ # Which target architectures to cross-compile for.
+ #  Definitions in configure/os/CONFIG_SITE.<host>.Common
+ #  may override this setting.
+-CROSS_COMPILER_TARGET_ARCHS=linux-arm
++#CROSS_COMPILER_TARGET_ARCHS=linux-arm
+
 
