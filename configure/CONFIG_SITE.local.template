@@ -1,0 +1,3 @@
+ifeq ($(T_A),linux-arm)
+include $(EPICS_BASE)/configure/CONFIG_SITE.linux-arm.Common
+endif

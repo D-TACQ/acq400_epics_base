@@ -1,0 +1,11 @@
+# Define your sysroot path
+# Do this with an exported env variable in the shell e.g.
+# export ACQ400_BUILDROOT_SYSROOT="/home/craig/PROJECTS/D-TACQ/ACQ400_ESW_TOP_PVXS/acq400_buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot"
+SYSROOT = $(ACQ400_BUILDROOT_SYSROOT)
+
+# Add the sysroot flag to the C and C++ compilers
+USR_CFLAGS += --sysroot=$(SYSROOT)
+USR_CXXFLAGS += --sysroot=$(SYSROOT)
+
+# Also add it for the linker (will be needed later)
+USR_LDFLAGS += --sysroot=$(SYSROOT)
