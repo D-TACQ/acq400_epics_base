@@ -31,6 +31,17 @@ sudo mkdir -p /usr/local/epics; sudo chown $USER:$USER /usr/local/epics
 ln -s $PWD /usr/local/epics
 # do that ONCE
 
+#    Add CONFIG_SITE build instructions for pvxs
+    
+#    Copy the template files dropping the suffix .template from the name
+#    and export the env variable ACQ400_BUILDROOT_SYSROOT. 
+#    setup.env does this, check it's valid for your system
+#    It should be set to the path of the sysroot folder output by acq400_buildroot.
+    
+#    This will pick up the libevent dependency that is required for PVXS.
+#            new file:   configure/CONFIG_SITE.linux-arm.Common.template
+#            new file:   configure/CONFIG_SITE.local.template
+
 source ./setup.env
 ./setup_buildroot_links
 make
