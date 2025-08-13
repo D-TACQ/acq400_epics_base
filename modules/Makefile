@@ -37,6 +37,8 @@ pva2pva_DEPEND_DIRS = pvAccess
 SUBMODULES += example
 example_DEPEND_DIRS = pva2pva pvaClient
 
+SUBMODULES += pvxs
+
 # Allow sites to add extra submodules
 -include Makefile.local
 
