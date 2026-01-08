@@ -5,10 +5,13 @@ echo make install doesn\'t do this. find out why not. meanwhile harvest...
 
 [ -z $EPICS_BASE ] && (echo EPICS_BASE not defined; exit 1)
 
-for prod in bin lib dbd
-do
-        echo asyn/${prod}; cp -af ../modules/asyn/$prod/* $prod
-        echo recsync/client/${prod}; cp -af ../modules/recsync/client/$prod/* $prod
-        echo seq/${prod}; cp -af ../modules/seq/$prod/* $prod
-        echo StreamDevice/${prod}; cp -af ../modules/StreamDevice/$prod/* $prod
+[ ! -z $HARVEST_VERBOSE ] && echo harvest running at $PWD
+
+for mod in asyn recsync/client seq StreamDevice; do
+	for prod in bin lib dbd; do
+		[ ! -z $HARVEST_VERBOSE ] && echo cp -af ../modules/$mod/$prod/* $prod
+		cp -af ../modules/$mod/$prod/* $prod
+	done
 done
+
+[ ! -z HARVEST_VERBOSE ] && echo harvest complete
